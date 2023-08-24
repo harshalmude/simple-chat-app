@@ -1,27 +1,29 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Chat App</title>
-  </head>
-  <body>
-    <ul id="messages"></ul>
-    <input id="input" autocomplete="off" /><button>Send</button>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>WhatsApp Clone</title>
+</head>
+<body>
+    <div class="container">
+        <div class="chat">
+            <div class="chat-header">
+                <h1>Contact Name</h1>
+            </div>
+            <div class="chat-messages">
+                <ul id="messages"></ul>
+            </div>
+            <div class="chat-input">
+                <input id="input" type="text" placeholder="Type your message">
+                <button id="send">Send</button>
+            </div>
+        </div>
+    </div>
+
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-      $(function () {
-        var socket = io();
-
-        $('form').submit(function () {
-          socket.emit('chat message', $('#input').val());
-          $('#input').val('');
-          return false;
-        });
-
-        socket.on('chat message', function (msg) {
-          $('#messages').append($('<li>').text(msg));
-        });
-      });
-    </script>
-  </body>
+    <script src="script.js"></script>
+</body>
 </html>
